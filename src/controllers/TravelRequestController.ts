@@ -51,9 +51,8 @@ export function approveTravelRequestController(
   req: IncomingMessage,
   res: ServerResponse,
 ): ServerResponse {
-  // Extract ID from URL pattern /api/travel-requests/{id}/approve
   const urlParts = req.url?.split('/') || [];
-  const id = urlParts[urlParts.length - 2]; // Get the ID part
+  const id = urlParts[urlParts.length - 2];
   if (!id) {
     res.statusCode = 400;
     res.setHeader('Content-Type', 'application/json');

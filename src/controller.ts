@@ -9,21 +9,38 @@ import {
   approveTravelRequestController,
 } from './controllers/TravelRequestController';
 
-export async function controller(
+export function controller(
   req: IncomingMessage,
   res: ServerResponse,
-): Promise<ServerResponse> {
+): ServerResponse {
   try {
+    if (
+      (!req.url || req.url === '/') &&
+      (!req.method || req.method === 'GET')
+    ) {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain');
+      res.end('Hello World');
+      return res;
+    }
+
     if (req.method === 'GET' && req.url === '/health') {
       return healthController(req, res);
     }
 
+    if (req.method === 'GET' && req.url === '/') {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain');
+      res.end('Hello World');
+      return res;
+    }
     if (req.method === 'GET' && req.url === '/api/version') {
       return versionController(req, res);
     }
 
     if (req.method === 'POST' && req.url === '/api/travel-requests') {
-      return createTravelRequestController(req, res);
+      void createTravelRequestController(req, res);
+      return res;
     }
 
     if (req.method === 'GET' && req.url === '/api/travel-requests') {
