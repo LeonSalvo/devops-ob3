@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "src/main.ts",
   "repository": "git@github.com:myfreax/typescript-backend-template.git",
-  "home":"https://www.myfreax.com",
+  "home": "https://www.myfreax.com",
   "author": "myfreax <web@myfreax.com>",
   "license": "Apache-2.0",
   "scripts": {
@@ -54,7 +54,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^8.0.1",
     "jest": "^28.1.0",
-    "lint-staged": "^13.0.3",
+    "lint-staged": "^16.2.6",
     "prettier": "^2.3.0",
     "supertest": "^6.1.3",
     "ts-jest": "^28.0.3",
