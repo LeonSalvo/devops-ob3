@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: non-compliant-pod
+  namespace: devops-ucu
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest  # viola la política no-latest-tag
+    # Sin recursos definidos - viola la política require-resources
+    # Sin securityContext - viola la política no-root-containers

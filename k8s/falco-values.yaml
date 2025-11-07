@@ -1,0 +1,38 @@
+podSecurityContext:
+  runAsUser: 1000
+  runAsNonRoot: true
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "256Mi"
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+
+containerSecurityContext:
+  privileged: false
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+
+falcosidekick:
+  enabled: true
+  podSecurityContext:
+    runAsUser: 1000
+    runAsNonRoot: true
+  containerSecurityContext:
+    privileged: false
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 1000
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "200m"
+      memory: "256Mi"
+
+ebpf:
+  enabled: true

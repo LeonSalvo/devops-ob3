@@ -1,0 +1,20 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: no-latest-tag
+spec:
+  validationFailureAction: enforce
+  background: false
+  rules:
+  - name: require-specific-tag
+    match:
+      any:
+      - resources:
+          kinds:
+          - Pod
+    validate:
+      message: "Using 'latest' tag is not allowed. Please use a specific version tag."
+      pattern:
+        spec:
+          containers:
+          - image: "!*:latest"

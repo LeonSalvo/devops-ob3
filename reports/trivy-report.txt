@@ -1,0 +1,66 @@
+
+Report Summary
+
+┌────────────────────────────────────────────────┬────────┬─────────────────┬─────────┐
+│                     Target                     │  Type  │ Vulnerabilities │ Secrets │
+├────────────────────────────────────────────────┼────────┼─────────────────┼─────────┤
+│ registry.konoba.space/viajes:v1 (debian 12.12) │ debian │       12        │    -    │
+└────────────────────────────────────────────────┴────────┴─────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+registry.konoba.space/viajes:v1 (debian 12.12)
+==============================================
+Total: 12 (UNKNOWN: 0, LOW: 12, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+
+┌─────────────┬──────────────────┬──────────┬──────────┬───────────────────┬───────────────┬─────────────────────────────────────────────────────────────┐
+│   Library   │  Vulnerability   │ Severity │  Status  │ Installed Version │ Fixed Version │                            Title                            │
+├─────────────┼──────────────────┼──────────┼──────────┼───────────────────┼───────────────┼─────────────────────────────────────────────────────────────┤
+│ gcc-12-base │ CVE-2022-27943   │ LOW      │ affected │ 12.2.0-14+deb12u1 │               │ binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows  │
+│             │                  │          │          │                   │               │ stack exhaustion in demangle_const                          │
+│             │                  │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2022-27943                  │
+├─────────────┼──────────────────┤          │          ├───────────────────┼───────────────┼─────────────────────────────────────────────────────────────┤
+│ libc6       │ CVE-2010-4756    │          │          │ 2.36-9+deb12u13   │               │ glibc: glob implementation can cause excessive CPU and      │
+│             │                  │          │          │                   │               │ memory consumption due to...                                │
+│             │                  │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2010-4756                   │
+│             ├──────────────────┤          │          │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│             │ CVE-2018-20796   │          │          │                   │               │ glibc: uncontrolled recursion in function                   │
+│             │                  │          │          │                   │               │ check_dst_limits_calc_pos_1 in posix/regexec.c              │
+│             │                  │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2018-20796                  │
+│             ├──────────────────┤          │          │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│             │ CVE-2019-1010022 │          │          │                   │               │ glibc: stack guard protection bypass                        │
+│             │                  │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2019-1010022                │
+│             ├──────────────────┤          │          │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│             │ CVE-2019-1010023 │          │          │                   │               │ glibc: running ldd on malicious ELF leads to code execution │
+│             │                  │          │          │                   │               │ because of...                                               │
+│             │                  │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2019-1010023                │
+│             ├──────────────────┤          │          │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│             │ CVE-2019-1010024 │          │          │                   │               │ glibc: ASLR bypass using cache of thread stack and heap     │
+│             │                  │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2019-1010024                │
+│             ├──────────────────┤          │          │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│             │ CVE-2019-1010025 │          │          │                   │               │ glibc: information disclosure of heap addresses of          │
+│             │                  │          │          │                   │               │ pthread_created thread                                      │
+│             │                  │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2019-1010025                │
+│             ├──────────────────┤          │          │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│             │ CVE-2019-9192    │          │          │                   │               │ glibc: uncontrolled recursion in function                   │
+│             │                  │          │          │                   │               │ check_dst_limits_calc_pos_1 in posix/regexec.c              │
+│             │                  │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2019-9192                   │
+├─────────────┼──────────────────┤          │          ├───────────────────┼───────────────┼─────────────────────────────────────────────────────────────┤
+│ libgcc-s1   │ CVE-2022-27943   │          │          │ 12.2.0-14+deb12u1 │               │ binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows  │
+│             │                  │          │          │                   │               │ stack exhaustion in demangle_const                          │
+│             │                  │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2022-27943                  │
+├─────────────┤                  │          │          │                   ├───────────────┤                                                             │
+│ libgomp1    │                  │          │          │                   │               │                                                             │
+│             │                  │          │          │                   │               │                                                             │
+│             │                  │          │          │                   │               │                                                             │
+├─────────────┼──────────────────┤          │          ├───────────────────┼───────────────┼─────────────────────────────────────────────────────────────┤
+│ libssl3     │ CVE-2025-27587   │          │          │ 3.0.17-1~deb12u3  │               │ OpenSSL 3.0.0 through 3.3.2 on the PowerPC architecture is  │
+│             │                  │          │          │                   │               │ vulnerable ......                                           │
+│             │                  │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2025-27587                  │
+├─────────────┼──────────────────┤          │          ├───────────────────┼───────────────┼─────────────────────────────────────────────────────────────┤
+│ libstdc++6  │ CVE-2022-27943   │          │          │ 12.2.0-14+deb12u1 │               │ binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows  │
+│             │                  │          │          │                   │               │ stack exhaustion in demangle_const                          │
+│             │                  │          │          │                   │               │ https://avd.aquasec.com/nvd/cve-2022-27943                  │
+└─────────────┴──────────────────┴──────────┴──────────┴───────────────────┴───────────────┴─────────────────────────────────────────────────────────────┘

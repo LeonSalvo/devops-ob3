@@ -1,0 +1,21 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: exclude-falco-namespace
+spec:
+  background: false
+  rules:
+  - name: exclude-falco
+    match:
+      any:
+      - resources:
+          namespaces:
+          - falco
+    preconditions:
+      any:
+      - key: "{{request.operation}}"
+        operator: Equals
+        value: CREATE
+    validate:
+      message: "Falco namespace is excluded from policies"
+      deny: false
