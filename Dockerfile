@@ -1,23 +1,20 @@
-FROM node:latest
-
-# update packages
-RUN apk update
-
-# create root application folder
+FROM node:22-alpine AS build-env
 WORKDIR /app
 
-# copy configs to /app folder
 COPY package*.json ./
-COPY tsconfig.json ./
-# copy source code to /app/src folder
-COPY src /app/src
 
-# check files list
-RUN ls -a
+RUN npm ci --omit=dev --ignore-scripts
 
-RUN npm install
-RUN npm run build
+COPY . .
+RUN npm run build && chown -R 65532:65532 dist
 
-EXPOSE 7777
+FROM gcr.io/distroless/nodejs22-debian12:nonroot
+WORKDIR /app
 
-CMD [ "node", "./dist/main.js" ]
+COPY --from=build-env /app/dist ./dist
+
+USER nonroot
+
+EXPOSE 3000
+
+CMD ["dist/main.js"]

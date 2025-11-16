@@ -29,10 +29,18 @@ spec:
       labels:
         app.kubernetes.io/name: backend
     spec:
+      securityContext:
+        runAsNonRoot: true          # opcional pero suma a nivel Pod
       containers:
         - name: backend
           image: registry.konoba.space/viajes:v1
           imagePullPolicy: Always
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532        # UID del usuario nonroot de distroless
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
           ports:
             - containerPort: 3000
           envFrom:

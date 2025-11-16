@@ -5,17 +5,20 @@ metadata:
 spec:
   background: false
   rules:
-  - name: exclude-falco
+  - name: allow-create-falco-namespace
     match:
-      any:
-      - resources:
-          namespaces:
-          - falco
+      resources:
+        kinds:
+        - Namespace
+        names:
+        - falco
     preconditions:
       any:
-      - key: "{{request.operation}}"
+      - key: "{{ request.operation }}"
         operator: Equals
-        value: CREATE
+        value: "CREATE"
     validate:
-      message: "Falco namespace is excluded from policies"
-      deny: false
+      message: "Namespace 'falco' creation is explicitly accepted by this policy."
+      pattern:
+        metadata:
+          name: "falco"

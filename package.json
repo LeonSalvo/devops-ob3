@@ -16,7 +16,8 @@
     "test": "jest",
     "test:cov": "jest --coverage",
     "test:e2e": "jest --detectOpenHandles --config jest.json",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "build": "tsc -p tsconfig.build.json"
   },
   "lint-staged": {
     "*.ts": [
