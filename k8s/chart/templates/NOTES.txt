@@ -1,0 +1,11 @@
+1. Para instalar/actualizar el release:
+   helm upgrade --install backend k8s/chart --namespace devops-ucu --create-namespace \
+     --set image.repository=registry.konoba.space/viajes --set image.tag=v1
+
+2. Para verificar el deployment:
+   kubectl get deploy backend -n devops-ucu
+
+3. Para acceder (port-forward):
+   kubectl port-forward svc/backend-svc 3000:80 -n devops-ucu
+
+4. Imagen configurada: {{ .Values.image.repository }}:{{ .Values.image.tag }}

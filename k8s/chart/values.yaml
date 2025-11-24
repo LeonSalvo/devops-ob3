@@ -1,0 +1,39 @@
+replicaCount: 1
+
+image:
+  repository: registry.konoba.space/viajes
+  tag: v1
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 80
+
+containerPort: 3000
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 65532
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+
+appConfig:
+  APP_NAME: "obligatorio3"
+  APP_VERSION: "1.0.0"
+
+livenessProbe:
+  path: /health
+  initialDelaySeconds: 30
+readinessProbe:
+  path: /health
+  initialDelaySeconds: 10

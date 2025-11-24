@@ -1,0 +1,9 @@
+# Archivos ignorados por Helm
+*.md
+*.txt
+*.bak
+node_modules/
+.git/
+.gitignore
+Dockerfile
+reports/
